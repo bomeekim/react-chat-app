@@ -1,0 +1,124 @@
+.list-item {
+  align-items: center;
+  display: flex;
+  flex: 1 1 100%;
+  letter-spacing: normal;
+  outline: none;
+  position: relative;
+  text-decoration: none;
+  height: 74px;
+  min-height: 74px;
+  margin: 10px 0 0;
+  padding: 9px 16px;
+  background-color: white;
+}
+
+.list-item__avartar {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  line-height: normal;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  width: 56px;
+  height: 56px;
+  margin: 0 15px 0 0;
+  background-color: #d8d8d8;
+  border-radius: 28px;
+}
+
+.image {
+  border-radius: inherit;
+  display: inline-flex;
+  height: inherit;
+  width: inherit;
+  position: relative;
+  overflow: hidden;
+  flex: 1 0 auto;
+  max-width: 100%;
+}
+
+.list-item__content {
+  align-items: center;
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1;
+  overflow: hidden;
+  padding: 18px 0;
+}
+
+.list-item__title {
+  align-self: center;
+  flex: 1 1 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 3px;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #464052;
+}
+
+.list-item__subtitle {
+  color: rgba(0,0,0,.6);
+  line-height: 1.2;
+  font-size: .875rem;
+  flex: 1 1 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.1px;
+  color: #a4a6b0;
+}
+
+.list-item__action {
+  margin-left: 16px;
+  align-items: flex-end;
+  align-self: stretch;
+  justify-content: space-between;
+  white-space: nowrap;
+  flex-direction: column;
+  display: inline-flex;
+  min-width: 24px;
+  margin: 12px 0;
+}
+
+.lite-item__action-text {
+  margin: 12px 0 6px 13px;
+  opacity: 0.4;
+  font-size: 11px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #363a42;
+}
+
+.list-item__action-icon {
+  
+}
+
+.circle {
+  font-size: 10px;
+  color: #fff;
+  text-align: center;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 10.5px;
+  background-color: #5b36ac;
+}
