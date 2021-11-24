@@ -1,0 +1,32 @@
+.input-message-wrapper {
+  display: flex;
+  flex: auto;
+}
+
+.input-message {
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 0 16px;
+  opacity: 0.6;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.12px;
+  color: #74747e;
+  margin-right: 12px;
+  flex-grow: 1;
+}
+
+.btn-send {
+  width: 50px;
+  height: 50px;
+  padding: 16px 12px;
+  border: none;
+  border-radius: 25px;
+  background-color: #5b36ac;
+}
