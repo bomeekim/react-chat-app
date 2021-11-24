@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import ChatListItem from './ChatListItem'
-import style from '../css/ChatList.module.css';
-import menuIcon from '../assets/icons/rectangle_2.png';
-import accountIcon from '../assets/icons/rectangle.png';
 import URL from '../api/url';
 import axios from 'axios';
+import style from '../css/ChatList.module.css';
 
 function Header() {
   return (
-    <header className={style.header}>
-      <div className={style.header__content}>
-        <button type="button">
-          <img src={menuIcon} />
-        </button>
-        <div className={style.header__title}>채팅</div>
-        <button type="button">
-          <img src={accountIcon} />
-        </button>
+    <header className="header">
+      <div className="header__content">
+        <button type="button" className={style['btn-menu']} />
+        <div className="header__title">채팅</div>
+        <button type="button" className={style['btn-account']} />
       </div> 
     </header>
   )

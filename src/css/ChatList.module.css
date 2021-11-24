@@ -1,42 +1,19 @@
-.header {
-  height: 44px;
-  padding: 0 12px;
-  background-color: #5b36ac;
-  margin-bottom: 10px;
-}
-
-.header__content {
-  align-items: center;
-  display: flex;
-  position: relative;
-  z-index: 0;
-  height: 44px;
-  justify-content: space-between;
-}
-
-.header__title {
-  font-size: 17px;  
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 20px;
-  letter-spacing: -0.12px;
-  text-align: center;
-  color: white;
-}
-
-button {
+.btn-menu {
   background: transparent;
   width: 24px;
   height: 24px;
   border: 0;
   outline: 0;
+  background-image: url('../assets/icons/rectangle_2.png');
+  background-position: center;
 }
 
-button > img {
-  width: inherit;
-  height: inherit;
-  position: relative;
-  right: 6px;
-  top: -1px;
+.btn-account {
+  background: transparent;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  outline: 0;
+  background-image: url('../assets/icons/rectangle.png');
+  background-position: center;
 }
