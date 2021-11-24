@@ -8,8 +8,7 @@
   text-decoration: none;
   height: 74px;
   min-height: 74px;
-  margin: 10px 0 0;
-  padding: 9px 16px;
+  padding: 0 16px;
   background-color: white;
 }
 
@@ -24,7 +23,7 @@
   overflow: hidden;
   width: 56px;
   height: 56px;
-  margin: 0 15px 0 0;
+  margin: 9px 15px 9px 0;
   background-color: #d8d8d8;
   border-radius: 28px;
 }
@@ -84,15 +83,14 @@
 }
 
 .list-item__action {
-  margin-left: 16px;
   align-items: flex-end;
   align-self: stretch;
   justify-content: space-between;
   white-space: nowrap;
   flex-direction: column;
   display: inline-flex;
-  min-width: 24px;
-  margin: 12px 0;
+  width: 29px;
+  margin: 12px 0 12px 13px;
 }
 
 .lite-item__action-text {

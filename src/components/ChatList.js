@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ChatListItem from './ChatListItem'
 import style from '../css/ChatList.module.css';
 import menuIcon from '../assets/icons/rectangle_2.png';
 import accountIcon from '../assets/icons/rectangle.png';
+import URL from '../api/url';
+import axios from 'axios';
 
 function Header() {
   return (
@@ -21,11 +23,17 @@ function Header() {
 }
 
 function ChatList() {
+  const [ list, setList ] = useState();
+
+  useEffect(async () => {
+    const { data } = await axios.get(URL.LIST);
+    setList(data);
+  }, []);
+
   return (
     <div>
-      {/* <header className={styles.header} /> */}
       <Header />
-      <ChatListItem />
+      {list && list.map(obj => <ChatListItem key={obj.roomId} item={obj} />)}
     </div>
   )
 }

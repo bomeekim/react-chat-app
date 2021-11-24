@@ -1,0 +1,60 @@
+{
+  "list": [
+    {
+      "roomId": 1,
+      "senderName": "장만월 사장님",      
+      "recentlySentMessage": "어딘데 출근 안하니, 죽고싶니?",
+      "unreadMessageCount": 2,
+      "lastSentDateTime": "",
+      "imageUrl": "../assets/images/img-profile-1.png"
+    },
+    {
+      "roomId": 2,
+      "senderName": "신정근 바텐더",      
+      "recentlySentMessage": "오시는 길에 와인 몇병만 사다주세요.",
+      "unreadMessageCount": 0,
+      "lastSentDateTime": "",
+      "imageUrl": "../assets/images/img-profile-3.png"
+    },
+    {
+      "roomId": 3,
+      "senderName": "이미라 의사",
+      "recentlySentMessage": "휴가 잘 보내고 계신가요? 다름이 아니라 지난번에",
+      "unreadMessageCount": 0,
+      "lastSentDateTime": "2021-11-23T04:01:06.982Z",
+      "imageUrl": "../assets/images/img-profile-4.png"
+    },
+    {
+      "roomId": 4,
+      "senderName": "구찬성 지배인",
+      "recentlySentMessage": "아 휴가셨군요. 약속은 다음으로 미루시죠!",
+      "unreadMessageCount": 0,
+      "lastSentDateTime": "2021-11-23T06:01:06.982Z",
+      "imageUrl": "../assets/images/img-profile-5.png"
+    },
+    {
+      "roomId": 5,
+      "senderName": "노준석 총지배인",
+      "recentlySentMessage": "휴가에서 언제 돌아오시는지요. 돌아오시면",
+      "unreadMessageCount": 0,
+      "lastSentDateTime": "2021-11-22T03:12:58.154Z",
+      "imageUrl": "../assets/images/img-profile-6.png"
+    },
+    {
+      "roomId": 6,
+      "senderName": "김유나 인턴",
+      "recentlySentMessage": "304호 키를 잃어버렸어요 어떻게 해야하죠 ㅠ",
+      "unreadMessageCount": 0,
+      "lastSentDateTime": "2021-11-20T013:22:03.32Z",
+      "imageUrl": "../assets/images/img-profile-7.png"
+    },
+    {
+      "roomId": 7,
+      "senderName": "구현모",
+      "recentlySentMessage": "술먹자",
+      "unreadMessageCount": 0,
+      "lastSentDateTime": "2021-11-16T13:30:11.154Z",
+      "imageUrl": "../assets/images/img-profile-2.png"
+    }
+  ]
+}
