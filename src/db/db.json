@@ -11,7 +11,7 @@
     {
       "roomId": 2,
       "name": "신정근 바텐더",      
-      "recentlySentMessage": "제가 좋아하는 거로 사도 되죠?",
+      "recentlySentMessage": "무난하게 1865? 요새 텍스트북도 많이 마시던데.",
       "unreadMessageCount": 0,
       "lastSentDateTime": "",
       "imageUrl": "../assets/images/img-profile-3.png"
@@ -73,7 +73,7 @@
         {
           "id": 2,
           "message": "출근했냐구?",
-          "sentDateTime": "2021-11-22T00:02:06.982Z",
+          "sentDateTime": "2021-11-22T00:01:16.982Z",
           "userId": 1,
           "userName": "장만월"
         },
@@ -100,7 +100,14 @@
         },
         {
           "id": 2,
-          "message": "제가 좋아하는 거로 사도 되죠?",
+          "message": "제가 좋아하는 거로 사도 돼죠?",
+          "sentDateTime": "",
+          "userId": 0,
+          "userName": "김보미"
+        },
+        {
+          "id": 3,
+          "message": "무난하게 1865? 요새 텍스트북도 괜찮다던데.",
           "sentDateTime": "",
           "userId": 0,
           "userName": "김보미"

@@ -46,3 +46,13 @@ export const getDayText = (dateTime) => {
   
   return `${weekday[date.getDay()]}요일`;
 }
+
+/**
+ * 두 시간의 차이를 구하는 함수
+ * @param {*} dateTime1 최근 시간
+ * @param {*} dateTime2 과거 시간
+ * @returns 두 시간의 차이 (단위 밀리초)
+ */
+export const diff = (dateTime1, dateTime2) => {
+  return (new Date(dateTime1)).getTime() - (new Date(dateTime2)).getTime();
+}

@@ -6,7 +6,7 @@ import ReceivedMessage from './ReceivedMessage';
 import InputMessage from './InputMessage';
 import Divider from './Divider';
 import axios from 'axios';
-import { getDateTime, getDate } from '../utils/date';
+import { getDateTime, getDate, diff } from '../utils/date';
 
 const MY_ID = 0;
 
@@ -30,12 +30,18 @@ function Body({ chat }) {
    * 메시지를 비교해 배열에 divider와 divider에 들어갈 날짜를 추가해주는 함수
    */
   const messageWithDivider = chat.reduce((prev, cur) => {
-    let prevDate = prev.length > 0 && new Date(prev[prev.length - 1].sentDateTime);
-    let curDate = !cur.sentDateTime ? new Date() : new Date(cur.sentDateTime);
+    const { sentDateTime: prevSentDateTime } = prev.length > 0 && prev[prev.length - 1]
+    const prevDate = new Date(prevSentDateTime);
+
+    if (!cur.sentDateTime) {
+      // dateTime 이 없는 경우 최근 날짜를 UTC 로 넣어준다.
+      cur.sentDateTime = new Date().toISOString();
+    }
+
+    const curDate = new Date(cur.sentDateTime);
 
     if (!!prevDate && !!curDate) {
-      const diff = curDate.getTime() - prevDate.getTime();
-      const convertedDiff = Math.round(diff / (1000 * 3600 * 24));
+      const convertedDiff = Math.round(diff(curDate, prevDate) / (1000 * 3600 * 24));
       
       convertedDiff > 0 && prev.push({ divider: true, date: getDate(curDate) });
     }
@@ -55,8 +61,19 @@ function Body({ chat }) {
       return <Divider key={obj.date.date} text={`${obj.date.year}년 ${obj.date.month}월 ${obj.date.date}일`} />;
     }
 
+    let hideTime = false; // 전송 시간 숨김 여부
+
+    if (index >= 0 && index < messageWithDivider.length - 1) {
+      const curDate = new Date(obj.sentDateTime);
+      const nextDate = new Date(messageWithDivider[index+1].sentDateTime);
+      const diffSeconds = Math.round(diff(nextDate, curDate) / 1000);
+
+      // 한 사람이 1분 동안 메시지를 연속해서 보낸다면, 마지막 메시지만 전송 시간을 표시한다.
+      hideTime = diffSeconds <= 60 && obj.userId === messageWithDivider[index+1].userId;
+    } 
+
     const { hour, minute } = getDateTime(obj.sentDateTime);
-    const time = `${hour}:${minute}`;
+    const time = !hideTime && `${hour}:${minute}`;
 
     if (obj.userId !== MY_ID) {
       return <ReceivedMessage key={obj.id} message={obj.message} time={time} />;
