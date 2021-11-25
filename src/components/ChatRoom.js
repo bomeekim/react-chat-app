@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import SentMessage from './SentMessage';
 import style from '../css/ChatRoom.module.css';
 import ReceivedMessage from './ReceivedMessage';
@@ -11,10 +11,12 @@ import { getDateTime, getDate, diff } from '../utils/date';
 const MY_ID = 0;
 
 function Header({ name }) {
+  const navigate = useNavigate();
+
   return (
     <header className="header">
       <div className="header__content">
-        <button type="button" className={style['btn-back']} />
+        <button type="button" className={style['btn-back']} onClick={() => navigate("/list")} />
         <div className={style['header__title']}>{name}</div>
         <div className={style['button-wrapper']}>
           <button type="button" className={style['btn-upload']} />
