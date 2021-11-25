@@ -2,23 +2,23 @@
   "list": [
     {
       "roomId": 1,
-      "senderName": "장만월 사장님",      
+      "name": "장만월 사장님",      
       "recentlySentMessage": "어딘데 출근 안하니, 죽고싶니?",
-      "unreadMessageCount": 2,
+      "unreadMessageCount": 3,
       "lastSentDateTime": "",
       "imageUrl": "../assets/images/img-profile-1.png"
     },
     {
       "roomId": 2,
-      "senderName": "신정근 바텐더",      
-      "recentlySentMessage": "오시는 길에 와인 몇병만 사다주세요.",
+      "name": "신정근 바텐더",      
+      "recentlySentMessage": "제가 좋아하는 거로 사도 되죠?",
       "unreadMessageCount": 0,
       "lastSentDateTime": "",
       "imageUrl": "../assets/images/img-profile-3.png"
     },
     {
       "roomId": 3,
-      "senderName": "이미라 의사",
+      "name": "이미라 의사",
       "recentlySentMessage": "휴가 잘 보내고 계신가요? 다름이 아니라 지난번에",
       "unreadMessageCount": 0,
       "lastSentDateTime": "2021-11-23T04:01:06.982Z",
@@ -26,7 +26,7 @@
     },
     {
       "roomId": 4,
-      "senderName": "구찬성 지배인",
+      "name": "구찬성 지배인",
       "recentlySentMessage": "아 휴가셨군요. 약속은 다음으로 미루시죠!",
       "unreadMessageCount": 0,
       "lastSentDateTime": "2021-11-23T06:01:06.982Z",
@@ -34,7 +34,7 @@
     },
     {
       "roomId": 5,
-      "senderName": "노준석 총지배인",
+      "name": "노준석 총지배인",
       "recentlySentMessage": "휴가에서 언제 돌아오시는지요. 돌아오시면",
       "unreadMessageCount": 0,
       "lastSentDateTime": "2021-11-22T03:12:58.154Z",
@@ -42,7 +42,7 @@
     },
     {
       "roomId": 6,
-      "senderName": "김유나 인턴",
+      "name": "김유나 인턴",
       "recentlySentMessage": "304호 키를 잃어버렸어요 어떻게 해야하죠 ㅠ",
       "unreadMessageCount": 0,
       "lastSentDateTime": "2021-11-20T13:22:03.32Z",
@@ -50,11 +50,132 @@
     },
     {
       "roomId": 7,
-      "senderName": "구현모",
+      "name": "구현모",
       "recentlySentMessage": "술먹자",
       "unreadMessageCount": 0,
       "lastSentDateTime": "2021-11-16T13:30:11.154Z",
       "imageUrl": "../assets/images/img-profile-2.png"
+    }
+  ],
+  "room": [
+    {
+      "id": 1,
+      "name": "장만월 사장님",
+      "lastSentDateTime": "",
+      "chat": [
+        {
+          "id": 1,
+          "message": "출근했니?",
+          "sentDateTime": "2021-11-22T00:01:06.982Z",
+          "userId": 1,
+          "userName": "장만월"
+        },
+        {
+          "id": 2,
+          "message": "출근했냐구?",
+          "sentDateTime": "2021-11-22T00:02:06.982Z",
+          "userId": 1,
+          "userName": "장만월"
+        },
+        {
+          "id": 3,
+          "message": "어딘데 출근 안하니, 죽고싶니?",
+          "sentDateTime": "",
+          "userId": 1,
+          "userName": "장만월"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "신정근 바텐더",
+      "lastSentDateTime": "",
+      "chat": [
+        {
+          "id": 1,
+          "message": "오시는 길에 와인 몇 병만 사다주세요.",
+          "sentDateTime": "",
+          "userId": 2,
+          "userName": "신정근"
+        },
+        {
+          "id": 2,
+          "message": "제가 좋아하는 거로 사도 되죠?",
+          "sentDateTime": "",
+          "userId": 0,
+          "userName": "김보미"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "이미라 의사",
+      "lastSentDateTime": "2021-11-23T04:01:06.982Z",
+      "chat": [
+        {
+          "id": 1,
+          "message": "휴가 잘 보내고 계신가요? 다름이 아니라 지난번에 받으셨던 검사 결과 나왔습니다.",
+          "sentDateTime": "2021-11-23T04:01:06.982Z",
+          "userId": 3,
+          "userName": "이미라"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "구찬성 지배인",
+      "lastSentDateTime": "2021-11-23T06:01:06.982Z",
+      "chat": [
+        {
+          "id": 1,
+          "message": "아 휴가셨군요. 약속은 다음으루 미루죠.",
+          "sentDateTime": "2021-11-23T06:01:06.982Z",
+          "userId": 4,
+          "userName": "구찬성"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "노준석 총지배인",
+      "lastSentDateTime": "2021-11-22T03:12:58.154Z",
+      "chat": [
+        {
+          "id": 1,
+          "message": "휴가에서 언제 돌아오시는지요. 돌아오시면 긴히 드릴 말씀이 있습니다.",
+          "sentDateTime": "2021-11-22T03:12:58.154Z",
+          "userId": 5,
+          "userName": "노준석"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "김유나 인턴",
+      "lastSentDateTime": "2021-11-20T13:22:03.32Z",
+      "chat": [
+        {
+          "id": 1,
+          "message": "304호 키를 잃어버렸어요. 어떻게 해야하죠 ㅠㅠ?",
+          "sentDateTime": "2021-11-20T13:22:03.32Z",
+          "userId": 6,
+          "userName": "김유나"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "구현모",
+      "lastSentDateTime": "2021-11-16T13:30:11.154Z",
+      "chat": [
+        {
+          "id": 1,
+          "message": "술먹자",
+          "sentDateTime": "2021-11-16T13:30:11.154Z",
+          "userId": 7,
+          "userName": "구현모"
+        }
+      ]
     }
   ]
 }

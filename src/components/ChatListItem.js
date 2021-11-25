@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import style from '../css/ChatListItem.module.css';
+import { getDateTime, getDate, getDayText } from '../utils/date';
+
+const WEEKDAY_NUM = 7;
 
 function ChatListItem({ item }) {
   const { 
     imageUrl,
     lastSentDateTime, 
     recentlySentMessage, 
-    senderName, 
+    name, 
     unreadMessageCount 
   } = item;
 
@@ -18,24 +21,18 @@ function ChatListItem({ item }) {
     const date = new Date(dateTime);
     const now = new Date();
 
-    // dateTime이 없는 경우 현재 시간으로 대체한다.
-    // hh:mm 형태를 나타내기 위해 roomId 1,2 에 해당하는 데이터의 lastSentDateTime 에 "" 을 넣어둠
+    /**
+     * dateTime이 없는 경우 현재 시간으로 대체한다.
+     * [참고] hh:mm 형태를 나타내기 위해 roomId 1,2 에 해당하는 데이터의 lastSentDateTime 에 "" 을 넣어둠
+     */
     if (!dateTime) {
-      let hour = now.getHours();
-      let minute = now.getMinutes();
-
-      hour = hour >= 10 ? hour : `0${hour}`;
-      minute = minute >= 10 ? minute : `0${minute}`;
-
+      const { hour, minute } = getDateTime();
       return `${hour}:${minute}`;
     } else {
-      const weekday = [ '일', '월', '화', '수', '목', '금', '토' ];
-      const isOverWeek = now.getDate() - date.getDate() >= weekday.length;
+      const isOverWeek = now.getDate() - date.getDate() >= WEEKDAY_NUM;
+      const { month, date: convertedDate } = getDate(dateTime);
 
-      // 현재 날짜기준 일주일이 지난 경우 mm월 dd일로 보여준다.
-      let month = date.getMonth();
-      month = month >= 10 ? month : `0${month}`;
-      return isOverWeek ? `${month + 1}월 ${date.getDate()}일` : `${weekday[date.getDay()]}요일`;
+      return isOverWeek ? `${month}월 ${convertedDate}일` : getDayText(dateTime);
     }
   }
 
@@ -49,7 +46,7 @@ function ChatListItem({ item }) {
       </div>
       <div className={style['list-item__content']}>
         <div className={style['list-item__title']}>
-          {senderName}
+          {name}
         </div>
         <div className={style['list-item__subtitle']}>
           {recentlySentMessage}

@@ -1,6 +1,7 @@
 .message-box {
   display: flex;
   justify-content: end;
+  padding-top: 10px;
 }
 
 .message-box__subtitle {

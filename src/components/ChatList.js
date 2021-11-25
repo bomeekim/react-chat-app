@@ -3,6 +3,7 @@ import ChatListItem from './ChatListItem'
 import URL from '../api/url';
 import axios from 'axios';
 import style from '../css/ChatList.module.css';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -27,7 +28,10 @@ function ChatList() {
   return (
     <div>
       <Header />
-      {list && list.map(obj => <ChatListItem key={obj.roomId} item={obj} />)}
+      {list && list.map(obj => 
+        <Link to={`/room/${obj.roomId}`} key={obj.roomId}>
+          <ChatListItem key={obj.roomId} item={obj} />
+        </Link>)}
     </div>
   )
 }

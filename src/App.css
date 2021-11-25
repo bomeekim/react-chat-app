@@ -24,3 +24,10 @@
   text-align: center;
   color: white;
 }
+
+/* a 태그 리셋 */
+a {
+  color: #fff; 
+  text-decoration: none; 
+  outline: none
+}

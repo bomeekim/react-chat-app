@@ -7,5 +7,6 @@ const PORT = 3001;
 const BASE_URL = `http://localhost:${PORT}`;
 
 export default URL = {
-  LIST: `${BASE_URL}/list`
+  LIST: `${BASE_URL}/list`,
+  GET: id => `${BASE_URL}/room/${id}`
 }
