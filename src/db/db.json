@@ -15,7 +15,7 @@
       "name": "신정근 바텐더",
       "recentlySentMessage": "(사진)",
       "unreadMessageCount": 0,
-      "lastSentDateTime": "2021-11-26T10:20:21.471Z",
+      "lastSentDateTime": "2021-11-26T11:49:07.643Z",
       "imageUrl": "/images/img-profile-3.png"
     },
     {
@@ -96,7 +96,7 @@
     {
       "id": 2,
       "name": "신정근 바텐더",
-      "lastSentDateTime": "2021-11-26T10:19:59.521Z",
+      "lastSentDateTime": "2021-11-26T11:49:07.643Z",
       "chat": [
         {
           "id": 1,
@@ -123,6 +123,20 @@
           "id": 4,
           "message": "/images/img-shot-4.png",
           "sentDateTime": "2021-11-26T08:09:04.527Z",
+          "userId": 0,
+          "userName": "김보미"
+        },
+        {
+          "id": 5,
+          "message": "/images/img-shot-1.png",
+          "sentDateTime": "2021-11-26T11:48:07.683Z",
+          "userId": 0,
+          "userName": "김보미"
+        },
+        {
+          "id": 6,
+          "message": "/images/img-shot-5.png",
+          "sentDateTime": "2021-11-26T11:49:07.643Z",
           "userId": 0,
           "userName": "김보미"
         }

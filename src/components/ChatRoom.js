@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import SentMessage from './SentMessage';
 import style from '../css/ChatRoom.module.css';
@@ -83,11 +83,20 @@ function Body({ chat, cancelClickFunc }) {
     } else {
       return <SentMessage key={obj.id} message={obj.message} time={time} cancelClickFunc={cancelClickFunc}/>;
     }
-  })
+  });
+
+  // 스크롤을 이동시킨다.
+  const messageBodyRef = useRef();
+  const scrollToBottom = () => {
+    messageBodyRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(scrollToBottom, [chat]);
 
   return (
     <div className={style['chat-room__contents']}>
       {messageBody}
+      <div ref={messageBodyRef} />
     </div>
   )
 }
