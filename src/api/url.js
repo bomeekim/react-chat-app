@@ -8,5 +8,6 @@ const BASE_URL = `http://localhost:${PORT}`;
 
 export default URL = {
   LIST: `${BASE_URL}/list`,
+  LIST_IMAGE: `${BASE_URL}/images`,
   GET: id => `${BASE_URL}/room/${id}`
 }

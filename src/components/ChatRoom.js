@@ -7,10 +7,13 @@ import InputMessage from './InputMessage';
 import Divider from './Divider';
 import axios from 'axios';
 import { getDateTime, getDate, diff } from '../utils/date';
+import ImageFileList from './ImageFileList';
+import URL from '../api/url';
 
-const MY_ID = 0;
+const MY_USER_ID = 0;
+const MY_USER_NAME = '김보미';
 
-function Header({ name }) {
+function Header({ name, clickFunc, isShow }) {
   const navigate = useNavigate();
 
   return (
@@ -19,7 +22,7 @@ function Header({ name }) {
         <button type="button" className={style['btn-back']} onClick={() => navigate("/list")} />
         <div className={style['header__title']}>{name}</div>
         <div className={style['button-wrapper']}>
-          <button type="button" className={style['btn-upload']} />
+          <button type="button" className={style['btn-upload']} onClick={() => clickFunc(!isShow)} />
           <button type="button" className={style['btn-search']} />
         </div>
       </div> 
@@ -77,7 +80,7 @@ function Body({ chat }) {
     const { hour, minute } = getDateTime(obj.sentDateTime);
     const time = !hideTime && `${hour}:${minute}`;
 
-    if (obj.userId !== MY_ID) {
+    if (obj.userId !== MY_USER_ID) {
       return <ReceivedMessage key={obj.id} message={obj.message} time={time} />;
     } else {
       return <SentMessage key={obj.id} message={obj.message} time={time} />;
@@ -102,15 +105,34 @@ function Footer() {
 function ChatRoom() {
   const { room_id: roomId } = useParams();
   const [ room, setRoom ] = useState({ name: '', chat: [] });
+  const [ showImageFileList, setShowImageFileList ] = useState(false);
 
   useEffect(async () => {
     const { data } = await axios.get(URL.GET(roomId));
     setRoom(data);
   }, []);
 
+  const handleImageClick = (url) => {
+    const newRoom = JSON.parse(JSON.stringify(room)); // 복사본 생성
+    const { chat } = newRoom;
+    
+    // 이미지를 클릭할 때 메시지를 새로 생성해 복사본의 chat 배열에 넣어준다.
+    chat.push({
+      id: chat.length + 1,
+      message: url,
+      sentDateTime: new Date().toISOString(),
+      userId: MY_USER_ID,
+      userName: MY_USER_NAME,
+    });
+
+    // state를 변경한다.
+    setRoom(newRoom);
+  }
+
   return (
     <div className={style['chat-room']}>
-      <Header name={room.name} />
+      <Header name={room.name} clickFunc={(value) => setShowImageFileList(value)} isShow={showImageFileList} />
+      {showImageFileList && <ImageFileList clickFunc={handleImageClick} />}
       <Body chat={room.chat}/>
       <Footer />
     </div>

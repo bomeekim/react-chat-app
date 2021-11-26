@@ -184,5 +184,35 @@
         }
       ]
     }
+  ],
+  "images": [
+    { 
+      "id": 1,
+      "imageUrl": "/images/img-shot-1.png"
+    },
+    { 
+      "id": 2,
+      "imageUrl": "/images/img-shot-2.png"
+    },
+    { 
+      "id": 3,
+      "imageUrl": "/images/img-shot-3.png"
+    },
+    { 
+      "id": 4,
+      "imageUrl": "/images/img-shot-4.png"
+    },
+    { 
+      "id": 5,
+      "imageUrl": "/images/img-shot-5.png"
+    },
+    { 
+      "id": 6,
+      "imageUrl": "/images/img-shot-6.png"
+    },
+    { 
+      "id": 7,
+      "imageUrl": "/images/img-shot-7.png"
+    }
   ]
 }
