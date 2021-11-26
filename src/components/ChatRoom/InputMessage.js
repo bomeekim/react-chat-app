@@ -7,7 +7,7 @@ function InputMessage() {
     <div className={style['input-message-wrapper']}>
       <input type="text" className={style['input-message']} placeholder="메시지를 입력하세요." />
       <button type="button" className={style['btn-send']}>
-        <img src={sendIcon} />
+        <img src={sendIcon} alt="Send Button" />
       </button>
     </div>
   )

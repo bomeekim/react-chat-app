@@ -5,13 +5,24 @@ import API from '../../api/index';
 function ImageFileList({ clickFunc }) {
   const [ filePathList, setFilePathList ] = useState([]);
 
-  useEffect(async () => {
-    const { data } = await API.IMAGE_LIST.GET();
-    setFilePathList(data);
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await API.IMAGE_LIST.GET();
+      setFilePathList(data);
+    };
+
+    fetchData();
   }, []);
 
   const images = filePathList.map(o => {
-    return <img className={style['thumbnail']} key={o.id} src={o.imageUrl} onClick={() => clickFunc(o.imageUrl)}/>
+    return (
+      <img className={style['thumbnail']} 
+           key={o.id} 
+           src={o.imageUrl} 
+           onClick={() => clickFunc(o.imageUrl)}
+           alt="Thumbnail"
+      />
+    );
   });
 
   return (

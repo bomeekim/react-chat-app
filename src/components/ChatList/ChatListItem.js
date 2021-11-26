@@ -44,7 +44,7 @@ function ChatListItem({ item }) {
   }
 
   const profileImage = () => {
-    return <img src={imageUrl} />
+    return <img src={imageUrl} alt="Sender Profile" />
   }
 
   return (

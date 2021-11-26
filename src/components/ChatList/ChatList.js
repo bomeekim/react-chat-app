@@ -19,9 +19,13 @@ function Header() {
 function ChatList() {
   const [ list, setList ] = useState();
 
-  useEffect(async () => {
-    const { data } = await API.CHAT_LIST.GET();
-    setList(data);
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await API.CHAT_LIST.GET();
+      setList(data);
+    };
+
+    fetchData();
   }, []);
 
   return (

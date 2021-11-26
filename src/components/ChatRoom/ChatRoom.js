@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import Divider from './Divider';
 import ImageFileList from './ImageFileList';
@@ -113,20 +113,29 @@ function ChatRoom() {
   const { room_id: roomId } = useParams();
   const [ room, setRoom ] = useState({ name: '', chat: [] });
   const [ showImageFileList, setShowImageFileList ] = useState(false);
-  const [ canceledSendImage, setCanceledSendImage ] = useState(false);
+  const updateChatListInfo = useCallback(
+    async (payload) => {
+      const { data } = await API.CHAT_LIST.PATCH(roomId, { ...payload });
+      return data;
+    },
+    [roomId],
+  );
 
-  useEffect(async () => {
+  const fetchData = useCallback(
+    async ()=> {
+      const { data } = await API.ROOM.GET(roomId);
+      setRoom(data);
+    },
+    [roomId],
+  )
+
+  useEffect(() => {
     // 채팅방 정보를 가져온다.
-    const { data } = await API.ROOM.GET(roomId);
-    setRoom(data);
+    fetchData();
 
     // 읽지 않은 메시지 수를 0으로 변경한다.
     updateChatListInfo({ unreadMessageCount: 0 });
-  }, []);
-
-  const updateChatListInfo = async(payload) => {
-    return await API.CHAT_LIST.PATCH(roomId, { ...payload });
-  }
+  }, [fetchData, updateChatListInfo]);
 
   const updateRoomInfo = async(newRoom) => {
     // 채팅방 목록에서 일부 필드를 업데이트한다.
@@ -143,8 +152,10 @@ function ChatRoom() {
     const { status } = await API.ROOM.UPDATE(roomId, newRoom);
 
     if (status === 200) {
-      // state를 변경한다.
-      setRoom(newRoom);
+      // 채팅방 정보를 조회한다.
+      setTimeout(() => {
+        fetchData();
+      }, 700)
     }
   }
 
@@ -165,16 +176,11 @@ function ChatRoom() {
     // 이미지를 클릭할 때 메시지를 새로 생성해 복사본의 chat 배열에 넣어준다.
     chat.push(newChat);
 
-    if (!canceledSendImage) {
-      const payload = { ...newRoom, lastSentDateTime: sentDateTime };
-
-      updateRoomInfo(payload);
-    }
+    const payload = { ...newRoom, lastSentDateTime: sentDateTime };
+    updateRoomInfo(payload);
   }
 
   const handleImageUploadCancelClick = async (imageUrl) => {
-    setCanceledSendImage(true);
-
     const newRoom = JSON.parse(JSON.stringify(room)); // 복사본 생성
     const { chat } = newRoom;
     const targetMessageIndex = chat.findIndex(o => o.message === imageUrl);
