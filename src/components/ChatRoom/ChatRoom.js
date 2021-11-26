@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
-import SentMessage from './SentMessage';
-import style from '../css/ChatRoom.module.css';
-import ReceivedMessage from './ReceivedMessage';
-import InputMessage from './InputMessage';
 import Divider from './Divider';
-import { getDateTime, getDate, diff } from '../utils/date';
 import ImageFileList from './ImageFileList';
-import API from '../api';
+import InputMessage from './InputMessage';
+import ReceivedMessage from './ReceivedMessage';
+import SentMessage from './SentMessage';
+import style from './ChatRoom.module.css';
+import { getDateTime, getDate, diff } from '../../utils/date';
+import API from '../../api';
 
 const MY_USER_ID = 0;
 const MY_USER_NAME = '김보미';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import style from '../css/SentMessage.module.css';
-import { getDate, getDateTime } from '../utils/date';
+import style from './SentMessage.module.css';
+import { getDateTime } from '../../utils/date';
 
 const formattedTime = (time) => `${time.hour}:${time.minute}`;
 

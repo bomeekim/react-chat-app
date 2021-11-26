@@ -3,11 +3,10 @@ import {
   Routes,
   Route,
   Navigate,
-  Link
 } from 'react-router-dom';
 import './App.css';
-import ChatList from './components/ChatList';
-import ChatRoom from './components/ChatRoom';
+import ChatList from './components/ChatList/ChatList';
+import ChatRoom from './components/ChatRoom/ChatRoom';
 
 function App() {
   return (

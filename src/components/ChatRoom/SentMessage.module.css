@@ -95,7 +95,7 @@ progress::-moz-progress-bar {
   outline: 0;
   top: 85px;
   left: 85px;
-  background-image: url('../assets/icons/img-close.png');
+  background-image: url('../../assets/icons/img-close.png');
   background-position: center;
   background-repeat: no-repeat;
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import sendIcon from '../assets/icons/img-send.png';
-import style from '../css/InputMessage.module.css';
+import sendIcon from '../../assets/icons/img-send.png';
+import style from './InputMessage.module.css';
 
 function InputMessage() {
   return (

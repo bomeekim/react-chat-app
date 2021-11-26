@@ -1,5 +1,5 @@
 import React from 'react'
-import style from '../css/ReceivedMessage.module.css';
+import style from './ReceivedMessage.module.css';
 
 function ReceivedMessage({ message, time }) {
   const formattedTime = `${time.hour}:${time.minute}`;

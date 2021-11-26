@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import ChatListItem from './ChatListItem'
-import style from '../css/ChatList.module.css';
+import style from './ChatList.module.css';
 import { Link } from 'react-router-dom';
-import API from '../api';
+import API from '../../api';
 
 function Header() {
   return (

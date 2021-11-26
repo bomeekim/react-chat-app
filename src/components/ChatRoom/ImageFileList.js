@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import style from '../css/ImageFileList.module.css';
-import API from '../api/index';
+import style from './ImageFileList.module.css';
+import API from '../../api/index';
 
 function ImageFileList({ clickFunc }) {
   const [ filePathList, setFilePathList ] = useState([]);

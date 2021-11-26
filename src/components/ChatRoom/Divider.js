@@ -1,5 +1,5 @@
 import React from 'react'
-import style from '../css/Divider.module.css';
+import style from './Divider.module.css';
 
 function Divider({ text }) {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
-import style from '../css/ChatListItem.module.css';
-import { getDateTime, getDate, getDayText, diff } from '../utils/date';
+import style from './ChatListItem.module.css';
+import { getDateTime, getDate, getDayText, diff } from '../../utils/date';
 
 const WEEKDAY_NUM = 7;
 
