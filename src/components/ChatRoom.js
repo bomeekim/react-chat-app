@@ -107,15 +107,24 @@ function ChatRoom() {
   const [ canceledSendImage, setCanceledSendImage ] = useState(false);
 
   useEffect(async () => {
+    // 채팅방 정보를 가져온다.
     const { data } = await API.ROOM.GET(roomId);
     setRoom(data);
+
+    // 읽지 않은 메시지 수를 0으로 변경한다.
+    updateChatListInfo({ unreadMessageCount: 0 });
   }, []);
+
+  const updateChatListInfo = async(payload) => {
+    return await API.CHAT_LIST.PATCH(roomId, { ...payload });
+  }
 
   const updateRoomInfo = async(newRoom) => {
     // 채팅방 목록에서 일부 필드를 업데이트한다.
     const { chat } = newRoom;
     const { message, sentDateTime } = chat[chat.length - 1];
-    const response = await API.CHAT_LIST.PATCH(roomId, {
+
+    updateChatListInfo({
       recentlySentMessage: /\.png|.jpg$/g.test(message) ? '(사진)' : message,
       unreadMessageCount: 0,
       lastSentDateTime: sentDateTime,
