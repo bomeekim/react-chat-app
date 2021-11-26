@@ -131,6 +131,8 @@ function ChatRoom() {
   }
 
   const handleImageClick = async (url) => {
+    setShowImageFileList(false);
+    
     const newRoom = JSON.parse(JSON.stringify(room)); // 복사본 생성
     const { chat } = newRoom;
     const sentDateTime = new Date().toISOString();

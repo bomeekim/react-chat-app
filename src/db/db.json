@@ -7,7 +7,7 @@
       "recentlySentMessage": "어딘데 출근 안하니, 죽고싶니?",
       "unreadMessageCount": 3,
       "lastSentDateTime": "",
-      "imageUrl": "../assets/images/img-profile-1.png"
+      "imageUrl": "/images/img-profile-1.png"
     },
     {
       "id": 2,
@@ -15,8 +15,8 @@
       "name": "신정근 바텐더",
       "recentlySentMessage": "(사진)",
       "unreadMessageCount": 0,
-      "lastSentDateTime": "2021-11-26T09:36:34.725Z",
-      "imageUrl": "../assets/images/img-profile-3.png"
+      "lastSentDateTime": "2021-11-26T10:20:21.471Z",
+      "imageUrl": "/images/img-profile-3.png"
     },
     {
       "id": 3,
@@ -25,7 +25,7 @@
       "recentlySentMessage": "휴가 잘 보내고 계신가요? 다름이 아니라 지난번에 받으셨던 검사 결과 나왔습니다.",
       "unreadMessageCount": 0,
       "lastSentDateTime": "2021-11-23T04:01:06.982Z",
-      "imageUrl": "../assets/images/img-profile-4.png"
+      "imageUrl": "/images/img-profile-4.png"
     },
     {
       "id": 4,
@@ -34,7 +34,7 @@
       "recentlySentMessage": "아 휴가셨군요. 약속은 다음으로 미루시죠!",
       "unreadMessageCount": 0,
       "lastSentDateTime": "2021-11-23T06:01:06.982Z",
-      "imageUrl": "../assets/images/img-profile-5.png"
+      "imageUrl": "/images/img-profile-5.png"
     },
     {
       "id": 5,
@@ -43,7 +43,7 @@
       "recentlySentMessage": "휴가에서 언제 돌아오시는지요. 돌아오시면",
       "unreadMessageCount": 0,
       "lastSentDateTime": "2021-11-22T03:12:58.154Z",
-      "imageUrl": "../assets/images/img-profile-6.png"
+      "imageUrl": "/images/img-profile-6.png"
     },
     {
       "id": 6,
@@ -52,7 +52,7 @@
       "recentlySentMessage": "304호 키를 잃어버렸어요 어떻게 해야하죠 ㅠ",
       "unreadMessageCount": 0,
       "lastSentDateTime": "2021-11-20T13:22:03.32Z",
-      "imageUrl": "../assets/images/img-profile-7.png"
+      "imageUrl": "/images/img-profile-7.png"
     },
     {
       "id": 7,
@@ -61,7 +61,7 @@
       "recentlySentMessage": "술먹자",
       "unreadMessageCount": 0,
       "lastSentDateTime": "2021-11-16T13:30:11.154Z",
-      "imageUrl": "../assets/images/img-profile-2.png"
+      "imageUrl": "/images/img-profile-2.png"
     }
   ],
   "room": [
@@ -96,7 +96,7 @@
     {
       "id": 2,
       "name": "신정근 바텐더",
-      "lastSentDateTime": "2021-11-26T09:36:34.725Z",
+      "lastSentDateTime": "2021-11-26T10:19:59.521Z",
       "chat": [
         {
           "id": 1,
@@ -123,13 +123,6 @@
           "id": 4,
           "message": "/images/img-shot-4.png",
           "sentDateTime": "2021-11-26T08:09:04.527Z",
-          "userId": 0,
-          "userName": "김보미"
-        },
-        {
-          "id": 5,
-          "message": "/images/img-shot-6.png",
-          "sentDateTime": "2021-11-26T09:37:34.725Z",
           "userId": 0,
           "userName": "김보미"
         }

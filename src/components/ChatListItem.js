@@ -43,12 +43,15 @@ function ChatListItem({ item }) {
     }
   }
 
+  const profileImage = () => {
+    return <img src={imageUrl} />
+  }
+
   return (
     <div className={style['list-item']}>
       <div className={style['list-item__avartar']}>
         <div className={style['image']}>
-          {/* TODO: 이미지 처리 */}
-          <img src="https://pbs.twimg.com/media/DBsYbe8WAAUz0Yx.jpg" />
+          {profileImage()}
         </div>
       </div>
       <div className={style['list-item__content']}>
