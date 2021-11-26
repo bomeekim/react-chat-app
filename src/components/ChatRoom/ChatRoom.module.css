@@ -47,6 +47,7 @@
   outline: 0;
   background-image: url('../../assets/icons/img-upload.png');
   background-position: center;
+  cursor: pointer;
 }
 
 .btn-search {
@@ -57,6 +58,7 @@
   outline: 0;
   background-image: url('../../assets/icons/img-search.png');
   background-position: center;
+  cursor: pointer;
 }
 
 .button-wrapper {

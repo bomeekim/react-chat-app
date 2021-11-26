@@ -25,7 +25,7 @@ function ChatListItem({ item }) {
 
     /**
      * dateTime이 없는 경우 현재 시간으로 대체한다.
-     * [참고] hh:mm 형태를 나타내기 위해 roomId 1,2 에 해당하는 데이터의 lastSentDateTime 에 "" 을 넣어둠
+     * [참고] hh:mm 형태를 나타내기 위해 roomId 1 에 해당하는 데이터의 lastSentDateTime 에 "" 을 넣어둠
      */
     if (!dateTime) {
       return formattedTime(getDateTime());
@@ -45,7 +45,7 @@ function ChatListItem({ item }) {
 
   const profileImage = () => {
     return <img src={imageUrl} alt="Sender Profile" />
-  }
+  };
 
   return (
     <div className={style['list-item']}>

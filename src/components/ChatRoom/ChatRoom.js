@@ -29,7 +29,7 @@ function Header({ name, clickFunc, isShow }) {
   )
 }
 
-function Body({ chat, cancelClickFunc }) {
+function Body({ chat, cancelClickFunc, completedUpload }) {
   /**
    * 메시지를 비교해 배열에 divider와 divider에 들어갈 날짜를 추가해주는 함수
    */
@@ -69,11 +69,11 @@ function Body({ chat, cancelClickFunc }) {
 
     if (index >= 0 && index < messageWithDivider.length - 1) {
       const curDate = new Date(obj.sentDateTime);
-      const nextDate = new Date(messageWithDivider[index+1].sentDateTime);
+      const nextDate = new Date(messageWithDivider[index + 1].sentDateTime);
       const diffSeconds = Math.round(diff(nextDate, curDate) / 1000);
 
       // 한 사람이 1분 동안 메시지를 연속해서 보낸다면, 마지막 메시지만 전송 시간을 표시한다.
-      hideTime = diffSeconds <= 60 && obj.userId === messageWithDivider[index+1].userId;
+      hideTime = diffSeconds <= 60 && obj.userId === messageWithDivider[index + 1].userId;
     } 
     
     const time = !hideTime && getDateTime(obj.sentDateTime);
@@ -81,7 +81,15 @@ function Body({ chat, cancelClickFunc }) {
     if (obj.userId !== MY_USER_ID) {
       return <ReceivedMessage key={obj.id} message={obj.message} time={time} />;
     } else {
-      return <SentMessage key={obj.id} message={obj.message} time={time} cancelClickFunc={cancelClickFunc}/>;
+      return (
+        <SentMessage 
+          key={obj.id} 
+          message={obj.message} 
+          time={time} 
+          cancelClickFunc={cancelClickFunc}
+          completedUpload={completedUpload}
+        />
+      );
     }
   });
 
@@ -101,10 +109,10 @@ function Body({ chat, cancelClickFunc }) {
   )
 }
 
-function Footer() {
+function Footer({ sendClickFunc }) {
   return (
     <footer>
-      <InputMessage className={style['input-message']} />
+      <InputMessage className={style['input-message']} sendClickFunc={sendClickFunc} />
     </footer>
   )
 }
@@ -127,7 +135,7 @@ function ChatRoom() {
       setRoom(data);
     },
     [roomId],
-  )
+  );
 
   useEffect(() => {
     // 채팅방 정보를 가져온다.
@@ -137,7 +145,36 @@ function ChatRoom() {
     updateChatListInfo({ unreadMessageCount: 0 });
   }, [fetchData, updateChatListInfo]);
 
+  /**
+   * 새로 보낸 메시지를 채팅방 정보에 추가해 리턴하는 함수
+   * @param {*} message 새로 보낸 메시지
+   * @returns 채팅방 정보
+   */
+  const getUpdatedRoomWithNewMessage = (message) => {
+    const newRoom = JSON.parse(JSON.stringify(room)); // 복사본 생성
+    const { chat } = newRoom;
+    const sentDateTime = new Date().toISOString();
+    const newChat = {
+      id: chat.length + 1,
+      message,
+      sentDateTime,
+      userId: MY_USER_ID,
+      userName: MY_USER_NAME,
+    };
+    
+    chat.push(newChat);
+
+    return newRoom;
+  };
+
+  /**
+   * 채팅방 정보를 업데이트 하는 함수
+   * @param {*} newRoom 변경된 채팅방 정보
+   */
   const updateRoomInfo = async(newRoom) => {
+    // 채팅방 정보를 업데이트한다.
+    await API.ROOM.UPDATE(roomId, newRoom);
+
     // 채팅방 목록에서 일부 필드를 업데이트한다.
     const { chat } = newRoom;
     const { message, sentDateTime } = chat[chat.length - 1];
@@ -147,54 +184,60 @@ function ChatRoom() {
       unreadMessageCount: 0,
       lastSentDateTime: sentDateTime,
     });
+  };
 
-    // 채팅방 정보를 업데이트한다.
-    const { status } = await API.ROOM.UPDATE(roomId, newRoom);
+  /**
+   * 파일 목록에서 이미지를 클릭했을 때 호출되는 함수
+   * @param {*} imageUrl 이미지 파일 주소
+   */
+  const handleImageClick = async (imageUrl) => {
+    setShowImageFileList(false); // 파일 목록을 숨김처리 한다.
 
-    if (status === 200) {
-      // 채팅방 정보를 조회한다.
-      setTimeout(() => {
-        fetchData();
-      }, 700)
-    }
-  }
+    const updatedRoom = getUpdatedRoomWithNewMessage(imageUrl);
+    setRoom(updatedRoom);
+  };
 
-  const handleImageClick = async (url) => {
-    setShowImageFileList(false);
-    
-    const newRoom = JSON.parse(JSON.stringify(room)); // 복사본 생성
-    const { chat } = newRoom;
-    const sentDateTime = new Date().toISOString();
-    const newChat = {
-      id: chat.length + 1,
-      message: url,
-      sentDateTime,
-      userId: MY_USER_ID,
-      userName: MY_USER_NAME,
-    };
-    
-    // 이미지를 클릭할 때 메시지를 새로 생성해 복사본의 chat 배열에 넣어준다.
-    chat.push(newChat);
-
-    const payload = { ...newRoom, lastSentDateTime: sentDateTime };
-    updateRoomInfo(payload);
-  }
-
+  /**
+   * 이미지 업로드를 취소했을 때 호출되는 함수
+   * @param {*} imageUrl 취소하려는 이미지 파일 주소
+   */
   const handleImageUploadCancelClick = async (imageUrl) => {
-    const newRoom = JSON.parse(JSON.stringify(room)); // 복사본 생성
-    const { chat } = newRoom;
+    const updatedRoom = JSON.parse(JSON.stringify(room)); // 복사본 생성
+    const { chat } = updatedRoom;
     const targetMessageIndex = chat.findIndex(o => o.message === imageUrl);
     chat.splice(targetMessageIndex, 1);
 
-    updateRoomInfo(newRoom);
-  }
+    setRoom(updatedRoom);
+  };
+
+  /**
+   * 메시지를 보낼 때 호출되는 함수
+   * @param {*} message 보낸 메시지
+   */
+  const handleMessageSendClick = async (message) => {
+    const updatedRoom = getUpdatedRoomWithNewMessage(message);
+
+    setRoom(updatedRoom);
+    updateRoomInfo(updatedRoom);
+  };
+
+  /**
+   * 파일 업로드가 완료됐을 때 호출되는 함수
+   */
+  const completedImageUpload = () => {
+    updateRoomInfo(room);
+  };
 
   return (
     <div className={style['chat-room']}>
       <Header name={room.name} clickFunc={(value) => setShowImageFileList(value)} isShow={showImageFileList} />
-      {showImageFileList && <ImageFileList clickFunc={handleImageClick} />}
-      <Body chat={room.chat} cancelClickFunc={handleImageUploadCancelClick} />
-      <Footer />
+      {showImageFileList && <ImageFileList clickFunc={handleImageClick}/>}
+      <Body 
+        chat={room.chat} 
+        cancelClickFunc={handleImageUploadCancelClick}
+        completedUpload={completedImageUpload}
+      />
+      <Footer sendClickFunc={handleMessageSendClick} />
     </div>
   )
 }

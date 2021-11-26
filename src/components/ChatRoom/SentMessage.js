@@ -4,7 +4,8 @@ import { getDateTime } from '../../utils/date';
 
 const formattedTime = (time) => `${time.hour}:${time.minute}`;
 
-function ImageMessage({ message, time, cancelClickFunc }) {
+function ImageMessage({ message, time, cancelClickFunc, completedUpload }) {
+  const [timeoutId, setTimeoutId] = useState(null);
   const [progressValue, setProgressValue] = useState(20);
   const [completed, setCompleted] = useState(false);
   const animateProgressbar = useCallback(
@@ -16,12 +17,15 @@ function ImageMessage({ message, time, cancelClickFunc }) {
           setProgressValue(progressValue + 5);
         } else {
           setCompleted(true);
+          completedUpload(); // 상위 컴포넌트로 이벤트 전달
         }
       }, timer);
-  
+      
+      setTimeoutId(progress); // timeout 아이디 저장
+
       return () => clearTimeout(progress);
     },
-    [progressValue]
+    [progressValue, completedUpload]
   );
 
   useEffect(() => {
@@ -39,13 +43,21 @@ function ImageMessage({ message, time, cancelClickFunc }) {
     }
   }, [time, animateProgressbar, completed]);
 
+  /**
+   * 취소 버튼 클릭 시 호출되는 함수
+   */
+  const onClickHander = () => {
+    clearTimeout(timeoutId); // setTimeout 해제
+    cancelClickFunc(message); // 상위로 취소한 이미지 파일의 url 을 전달한다.
+  };
+
   return (
     <div>
       <div className={style['message-box-image']}>
         <span className={style['message-box__subtitle']}>{time && formattedTime(time)}</span>
         <div className={style['image-wrapper']}>
           <img src={message} alt="The message I sent you."/>
-          {!completed && <button onClick={() => cancelClickFunc(message)} />}
+          {!completed && <button onClick={onClickHander} />}
         </div>
       </div>
       
@@ -64,15 +76,22 @@ function TextMessage({ message, time }) {
       <span className={style['message-box__subtitle']}>{time && formattedTime(time)}</span>
       <div className={style['message-box__contents']}>{message}</div>
     </div>
-  );
+  )
 }
 
-function SentMessage({ message, time, cancelClickFunc }) {
+function SentMessage({ message, time, cancelClickFunc, completedUpload }) {
   const isImage = /\.png|.jpg$/g.test(message);
 
   return (
     <div>
-      {isImage && <ImageMessage message={message} time={time} cancelClickFunc={cancelClickFunc}/>}
+      {isImage && 
+        <ImageMessage 
+          message={message} 
+          time={time} 
+          cancelClickFunc={cancelClickFunc}
+          completedUpload={completedUpload}
+        />
+      }
       {!isImage && <TextMessage message={message} time={time} />}
     </div>
   )
