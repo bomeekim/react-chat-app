@@ -5,10 +5,9 @@ import style from '../css/ChatRoom.module.css';
 import ReceivedMessage from './ReceivedMessage';
 import InputMessage from './InputMessage';
 import Divider from './Divider';
-import axios from 'axios';
 import { getDateTime, getDate, diff } from '../utils/date';
 import ImageFileList from './ImageFileList';
-import URL from '../api/url';
+import API from '../api';
 
 const MY_USER_ID = 0;
 const MY_USER_NAME = '김보미';
@@ -108,7 +107,7 @@ function ChatRoom() {
   const [ showImageFileList, setShowImageFileList ] = useState(false);
 
   useEffect(async () => {
-    const { data } = await axios.get(URL.GET(roomId));
+    const { data } = await API.GET(roomId);
     setRoom(data);
   }, []);
 

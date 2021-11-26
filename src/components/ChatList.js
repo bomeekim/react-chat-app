@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import ChatListItem from './ChatListItem'
-import URL from '../api/url';
-import axios from 'axios';
 import style from '../css/ChatList.module.css';
 import { Link } from 'react-router-dom';
+import API from '../api';
 
 function Header() {
   return (
@@ -21,7 +20,7 @@ function ChatList() {
   const [ list, setList ] = useState();
 
   useEffect(async () => {
-    const { data } = await axios.get(URL.LIST);
+    const { data } = await API.LIST();
     setList(data);
   }, []);
 

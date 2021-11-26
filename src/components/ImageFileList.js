@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import style from '../css/ImageFileList.module.css';
-import axios from 'axios';
-import URL from '../api/url';
+import API from '../api/index';
 
 function ImageFileList({ clickFunc }) {
   const [ filePathList, setFilePathList ] = useState([]);
 
   useEffect(async () => {
-    const { data } = await axios.get(URL.LIST_IMAGE);
+    const { data } = await API.LIST_IMAGE();
     setFilePathList(data);
   }, []);
 
