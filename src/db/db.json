@@ -15,14 +15,14 @@
       "name": "신정근 바텐더",
       "recentlySentMessage": "(사진)",
       "unreadMessageCount": 0,
-      "lastSentDateTime": "2021-11-26T08:09:04.527Z",
+      "lastSentDateTime": "2021-11-26T09:36:34.725Z",
       "imageUrl": "../assets/images/img-profile-3.png"
     },
     {
       "id": 3,
       "roomId": 3,
       "name": "이미라 의사",
-      "recentlySentMessage": "휴가 잘 보내고 계신가요? 다름이 아니라 지난번에",
+      "recentlySentMessage": "휴가 잘 보내고 계신가요? 다름이 아니라 지난번에 받으셨던 검사 결과 나왔습니다.",
       "unreadMessageCount": 0,
       "lastSentDateTime": "2021-11-23T04:01:06.982Z",
       "imageUrl": "../assets/images/img-profile-4.png"
@@ -96,7 +96,7 @@
     {
       "id": 2,
       "name": "신정근 바텐더",
-      "lastSentDateTime": "2021-11-26T08:09:04.527Z",
+      "lastSentDateTime": "2021-11-26T09:36:34.725Z",
       "chat": [
         {
           "id": 1,
@@ -125,13 +125,20 @@
           "sentDateTime": "2021-11-26T08:09:04.527Z",
           "userId": 0,
           "userName": "김보미"
+        },
+        {
+          "id": 5,
+          "message": "/images/img-shot-6.png",
+          "sentDateTime": "2021-11-26T09:37:34.725Z",
+          "userId": 0,
+          "userName": "김보미"
         }
       ]
     },
     {
       "id": 3,
       "name": "이미라 의사",
-      "lastSentDateTime": "2021-11-23T04:01:06.982Z",
+      "lastSentDateTime": "2021-11-26T10:03:41.040Z",
       "chat": [
         {
           "id": 1,

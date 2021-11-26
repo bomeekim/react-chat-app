@@ -75,9 +75,8 @@ function Body({ chat, cancelClickFunc }) {
       // 한 사람이 1분 동안 메시지를 연속해서 보낸다면, 마지막 메시지만 전송 시간을 표시한다.
       hideTime = diffSeconds <= 60 && obj.userId === messageWithDivider[index+1].userId;
     } 
-
-    const { hour, minute } = getDateTime(obj.sentDateTime);
-    const time = !hideTime && `${hour}:${minute}`;
+    
+    const time = !hideTime && getDateTime(obj.sentDateTime);
 
     if (obj.userId !== MY_USER_ID) {
       return <ReceivedMessage key={obj.id} message={obj.message} time={time} />;

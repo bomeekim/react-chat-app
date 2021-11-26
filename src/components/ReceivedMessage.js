@@ -2,10 +2,12 @@ import React from 'react'
 import style from '../css/ReceivedMessage.module.css';
 
 function ReceivedMessage({ message, time }) {
+  const formattedTime = `${time.hour}:${time.minute}`;
+
   return (
     <div className={style['message-box']}>
       <div className={style['message-box__contents']}>{message}</div>
-      <span className={style['message-box__subtitle']}>{time}</span>
+      <span className={style['message-box__subtitle']}>{time && formattedTime}</span>
     </div>
   )
 }

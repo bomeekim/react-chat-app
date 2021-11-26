@@ -10,11 +10,13 @@
   // dateTime이 없는 경우 현재 시간으로 대체한다.
   let hour = !dateTime ? now.getHours() : date.getHours();
   let minute = !dateTime ? now.getMinutes() : date.getMinutes();
+  let seconds = !dateTime ? now.getSeconds() : date.getSeconds();
 
   hour = hour >= 10 ? hour : `0${hour}`;
   minute = minute >= 10 ? minute : `0${minute}`;
+  seconds = seconds >= 10 ? seconds : `0${seconds}`;
 
-  return { hour, minute };
+  return { hour, minute, seconds };
 }
 
 /**

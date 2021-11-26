@@ -1,6 +1,6 @@
 import React from 'react'
 import style from '../css/ChatListItem.module.css';
-import { getDateTime, getDate, getDayText } from '../utils/date';
+import { getDateTime, getDate, getDayText, diff } from '../utils/date';
 
 const WEEKDAY_NUM = 7;
 
@@ -12,6 +12,8 @@ function ChatListItem({ item }) {
     name, 
     unreadMessageCount 
   } = item;
+
+  const formattedTime = (time) => `${time.hour}:${time.minute}`;
 
   /** 
    * UTC 를 locale 에 맞는 시간으로 변경해주는 함수
@@ -26,13 +28,18 @@ function ChatListItem({ item }) {
      * [참고] hh:mm 형태를 나타내기 위해 roomId 1,2 에 해당하는 데이터의 lastSentDateTime 에 "" 을 넣어둠
      */
     if (!dateTime) {
-      const { hour, minute } = getDateTime();
-      return `${hour}:${minute}`;
+      return formattedTime(getDateTime());
     } else {
-      const isOverWeek = now.getDate() - date.getDate() >= WEEKDAY_NUM;
-      const { month, date: convertedDate } = getDate(dateTime);
+      const convertedDiff = Math.round(diff(now, date) / (1000 * 3600 * 24));
+      
+      if (convertedDiff === 0) {
+        return formattedTime(getDateTime(dateTime));
+      } else {
+        const isOverWeek = now.getDate() - date.getDate() >= WEEKDAY_NUM;
+        const { month, date: convertedDate } = getDate(dateTime);
 
-      return isOverWeek ? `${month}월 ${convertedDate}일` : getDayText(dateTime);
+        return isOverWeek ? `${month}월 ${convertedDate}일` : getDayText(dateTime);
+      }
     }
   }
 
