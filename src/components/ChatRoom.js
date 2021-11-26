@@ -29,7 +29,7 @@ function Header({ name, clickFunc, isShow }) {
   )
 }
 
-function Body({ chat }) {
+function Body({ chat, cancelClickFunc }) {
   /**
    * 메시지를 비교해 배열에 divider와 divider에 들어갈 날짜를 추가해주는 함수
    */
@@ -82,7 +82,7 @@ function Body({ chat }) {
     if (obj.userId !== MY_USER_ID) {
       return <ReceivedMessage key={obj.id} message={obj.message} time={time} />;
     } else {
-      return <SentMessage key={obj.id} message={obj.message} time={time} />;
+      return <SentMessage key={obj.id} message={obj.message} time={time} cancelClickFunc={cancelClickFunc}/>;
     }
   })
 
@@ -105,34 +105,70 @@ function ChatRoom() {
   const { room_id: roomId } = useParams();
   const [ room, setRoom ] = useState({ name: '', chat: [] });
   const [ showImageFileList, setShowImageFileList ] = useState(false);
+  const [ canceledSendImage, setCanceledSendImage ] = useState(false);
 
   useEffect(async () => {
-    const { data } = await API.GET(roomId);
+    const { data } = await API.ROOM.GET(roomId);
     setRoom(data);
   }, []);
 
-  const handleImageClick = (url) => {
-    const newRoom = JSON.parse(JSON.stringify(room)); // 복사본 생성
+  const updateRoomInfo = async(newRoom) => {
+    // 채팅방 목록에서 일부 필드를 업데이트한다.
     const { chat } = newRoom;
-    
-    // 이미지를 클릭할 때 메시지를 새로 생성해 복사본의 chat 배열에 넣어준다.
-    chat.push({
-      id: chat.length + 1,
-      message: url,
-      sentDateTime: new Date().toISOString(),
-      userId: MY_USER_ID,
-      userName: MY_USER_NAME,
+    const { message, sentDateTime } = chat[chat.length - 1];
+    const response = await API.CHAT_LIST.PATCH(roomId, {
+      recentlySentMessage: /\.png|.jpg$/g.test(message) ? '(사진)' : message,
+      unreadMessageCount: 0,
+      lastSentDateTime: sentDateTime,
     });
 
-    // state를 변경한다.
-    setRoom(newRoom);
+    // 채팅방 정보를 업데이트한다.
+    const { status } = await API.ROOM.UPDATE(roomId, newRoom);
+
+    if (status === 200) {
+      // state를 변경한다.
+      setRoom(newRoom);
+    }
+  }
+
+  const handleImageClick = async (url) => {
+    const newRoom = JSON.parse(JSON.stringify(room)); // 복사본 생성
+    const { chat } = newRoom;
+    const sentDateTime = new Date().toISOString();
+    const newChat = {
+      id: chat.length + 1,
+      message: url,
+      sentDateTime,
+      userId: MY_USER_ID,
+      userName: MY_USER_NAME,
+    };
+    
+    // 이미지를 클릭할 때 메시지를 새로 생성해 복사본의 chat 배열에 넣어준다.
+    chat.push(newChat);
+
+    if (!canceledSendImage) {
+      const payload = { ...newRoom, lastSentDateTime: sentDateTime };
+
+      updateRoomInfo(payload);
+    }
+  }
+
+  const handleImageUploadCancelClick = async (imageUrl) => {
+    setCanceledSendImage(true);
+
+    const newRoom = JSON.parse(JSON.stringify(room)); // 복사본 생성
+    const { chat } = newRoom;
+    const targetMessageIndex = chat.findIndex(o => o.message === imageUrl);
+    chat.splice(targetMessageIndex, 1);
+
+    updateRoomInfo(newRoom);
   }
 
   return (
     <div className={style['chat-room']}>
       <Header name={room.name} clickFunc={(value) => setShowImageFileList(value)} isShow={showImageFileList} />
       {showImageFileList && <ImageFileList clickFunc={handleImageClick} />}
-      <Body chat={room.chat}/>
+      <Body chat={room.chat} cancelClickFunc={handleImageUploadCancelClick} />
       <Footer />
     </div>
   )

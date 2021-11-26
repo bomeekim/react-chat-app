@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import style from '../css/SentMessage.module.css';
 
-function ImageMessage({ message, time }) {
+function ImageMessage({ message, time, cancelClickFunc }) {
   const [progressValue, setProgressValue] = useState(20);
   const [completed, setCompleted] = useState(false);
 
@@ -26,7 +26,7 @@ function ImageMessage({ message, time }) {
         <span className={style['message-box__subtitle']}>{time}</span>
         <div className={style['image-wrapper']}>
           <img src={message}/>
-          {!completed && <button />}
+          {!completed && <button onClick={() => cancelClickFunc(message)} />}
         </div>
       </div>
       
@@ -48,12 +48,12 @@ function TextMessage({ message, time }) {
   );
 }
 
-function SentMessage({ message, time }) {
+function SentMessage({ message, time, cancelClickFunc }) {
   const isImage = /\.png|.jpg$/g.test(message);
 
   return (
     <div>
-      {isImage && <ImageMessage message={message} time={time} />}
+      {isImage && <ImageMessage message={message} time={time} cancelClickFunc={cancelClickFunc}/>}
       {!isImage && <TextMessage message={message} time={time} />}
     </div>
   )

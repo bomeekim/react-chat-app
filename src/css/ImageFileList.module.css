@@ -4,6 +4,7 @@
   background-color: #5b36ac;
   margin-top: -11px;
   margin-bottom: 10px;
+  overflow-x: auto;
 }
 
 .thumbnail {

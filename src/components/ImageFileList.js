@@ -6,7 +6,7 @@ function ImageFileList({ clickFunc }) {
   const [ filePathList, setFilePathList ] = useState([]);
 
   useEffect(async () => {
-    const { data } = await API.LIST_IMAGE();
+    const { data } = await API.IMAGE_LIST.GET();
     setFilePathList(data);
   }, []);
 

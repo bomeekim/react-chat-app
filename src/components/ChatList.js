@@ -20,7 +20,7 @@ function ChatList() {
   const [ list, setList ] = useState();
 
   useEffect(async () => {
-    const { data } = await API.LIST();
+    const { data } = await API.CHAT_LIST.GET();
     setList(data);
   }, []);
 

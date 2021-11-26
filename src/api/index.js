@@ -9,9 +9,18 @@ import axios from 'axios';
  const BASE_URL = `http://localhost:${PORT}`;
 
 const API = {
-  LIST: () => axios.get(`${BASE_URL}/list`),
-  LIST_IMAGE: () => axios.get(`${BASE_URL}/images`),
-  GET: id => axios.get(`${BASE_URL}/room/${id}`)
+  CHAT_LIST: {
+    GET: () => axios.get(`${BASE_URL}/list`),
+    DETAIL: (id) => axios.get(`${BASE_URL}/list/${id}`),
+    PATCH: (id, payload) => axios.patch(`${BASE_URL}/list/${id}`, payload),
+  },
+  IMAGE_LIST: {
+    GET: () => axios.get(`${BASE_URL}/images`),  
+  },
+  ROOM: {
+    GET: id => axios.get(`${BASE_URL}/room/${id}`),
+    UPDATE: (id, payload) => axios.put(`${BASE_URL}/room/${id}`, payload)
+  }
 };
 
 export default API;

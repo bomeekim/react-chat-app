@@ -1,22 +1,25 @@
 {
   "list": [
     {
+      "id": 1,
       "roomId": 1,
-      "name": "장만월 사장님",      
+      "name": "장만월 사장님",
       "recentlySentMessage": "어딘데 출근 안하니, 죽고싶니?",
       "unreadMessageCount": 3,
       "lastSentDateTime": "",
       "imageUrl": "../assets/images/img-profile-1.png"
     },
     {
+      "id": 2,
       "roomId": 2,
-      "name": "신정근 바텐더",      
-      "recentlySentMessage": "무난하게 1865? 요새 텍스트북도 많이 마시던데.",
+      "name": "신정근 바텐더",
+      "recentlySentMessage": "(사진)",
       "unreadMessageCount": 0,
-      "lastSentDateTime": "",
+      "lastSentDateTime": "2021-11-26T08:09:04.527Z",
       "imageUrl": "../assets/images/img-profile-3.png"
     },
     {
+      "id": 3,
       "roomId": 3,
       "name": "이미라 의사",
       "recentlySentMessage": "휴가 잘 보내고 계신가요? 다름이 아니라 지난번에",
@@ -25,6 +28,7 @@
       "imageUrl": "../assets/images/img-profile-4.png"
     },
     {
+      "id": 4,
       "roomId": 4,
       "name": "구찬성 지배인",
       "recentlySentMessage": "아 휴가셨군요. 약속은 다음으로 미루시죠!",
@@ -33,6 +37,7 @@
       "imageUrl": "../assets/images/img-profile-5.png"
     },
     {
+      "id": 5,
       "roomId": 5,
       "name": "노준석 총지배인",
       "recentlySentMessage": "휴가에서 언제 돌아오시는지요. 돌아오시면",
@@ -41,6 +46,7 @@
       "imageUrl": "../assets/images/img-profile-6.png"
     },
     {
+      "id": 6,
       "roomId": 6,
       "name": "김유나 인턴",
       "recentlySentMessage": "304호 키를 잃어버렸어요 어떻게 해야하죠 ㅠ",
@@ -49,6 +55,7 @@
       "imageUrl": "../assets/images/img-profile-7.png"
     },
     {
+      "id": 7,
       "roomId": 7,
       "name": "구현모",
       "recentlySentMessage": "술먹자",
@@ -89,26 +96,33 @@
     {
       "id": 2,
       "name": "신정근 바텐더",
-      "lastSentDateTime": "",
+      "lastSentDateTime": "2021-11-26T08:09:04.527Z",
       "chat": [
         {
           "id": 1,
           "message": "오시는 길에 와인 몇 병만 사다주세요.",
-          "sentDateTime": "",
+          "sentDateTime": "2021-11-26T06:44:24.955Z",
           "userId": 2,
           "userName": "신정근"
         },
         {
           "id": 2,
           "message": "제가 좋아하는 거로 사도 돼죠?",
-          "sentDateTime": "",
+          "sentDateTime": "2021-11-26T06:44:24.955Z",
           "userId": 0,
           "userName": "김보미"
         },
         {
           "id": 3,
           "message": "무난하게 1865? 요새 텍스트북도 괜찮다던데.",
-          "sentDateTime": "",
+          "sentDateTime": "2021-11-26T06:44:24.955Z",
+          "userId": 0,
+          "userName": "김보미"
+        },
+        {
+          "id": 4,
+          "message": "/images/img-shot-4.png",
+          "sentDateTime": "2021-11-26T08:09:04.527Z",
           "userId": 0,
           "userName": "김보미"
         }
@@ -186,31 +200,31 @@
     }
   ],
   "images": [
-    { 
+    {
       "id": 1,
       "imageUrl": "/images/img-shot-1.png"
     },
-    { 
+    {
       "id": 2,
       "imageUrl": "/images/img-shot-2.png"
     },
-    { 
+    {
       "id": 3,
       "imageUrl": "/images/img-shot-3.png"
     },
-    { 
+    {
       "id": 4,
       "imageUrl": "/images/img-shot-4.png"
     },
-    { 
+    {
       "id": 5,
       "imageUrl": "/images/img-shot-5.png"
     },
-    { 
+    {
       "id": 6,
       "imageUrl": "/images/img-shot-6.png"
     },
-    { 
+    {
       "id": 7,
       "imageUrl": "/images/img-shot-7.png"
     }
